@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Form</title>
+    <style>
+        @import url('https://www.dafont.com/mandala-birthday.font');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body
+{
+    
+    background-image:url("../../Desktop/istockphoto-164473899-612x612.jpg");
+    background-size: cover;
+
+    /* background-color: darkslategray; */
+}
+.box
+{
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background: khaki;
+    border-radius: 10px;
+    overflow: hidden; 
+    margin-left: 32%;
+    margin-top: 10%;
+    /* display:flex; */
+    justify-content: center;
+    align-items: center;
+    /* height: 600px;    */
+}
+.form
+{
+    position: absolute;
+    inset: 1px;
+    border-radius: 10px;
+    background: aquamarine   ;    
+    z-index: 8;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+}
+.form h2
+{
+    color: crimson;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.inputbox
+{
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+    font-family: cursive;
+}
+.inputbox input
+{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 15px;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+.inputbox span
+{
+    position: absolute;
+    left: 0;
+    padding: 20px 0 10px;
+    font-size: 15px;
+    color: grey;
+    letter-spacing: 1px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+.inputbox i
+{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: crimson;
+    border-radius:4px;
+    transition: 0.3s;
+    pointer-events: none;
+
+}
+.inputbox input:valid ~ i,
+.inputbox input:focus ~ i
+{
+    height: 40px;
+}
+.links
+{
+    display: flex;
+    justify-content: space-between;
+}
+.links a
+{
+   margin: 10px 0;
+   font-size: 12px;
+   color: grey;
+   text-decoration: none;
+}
+.links a:hover,
+.links a:nth-child(2)
+{
+    color: aqua;
+}
+.btn
+{
+    border: none;
+    outline: none;
+    background:crimson;
+    padding: 15px 30px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+}
+p{
+    color: red;
+    font-size: 22px;
+
+}
+    </style>
+   
+</head>
+<body>
+    <div class="box">
+        <div class="form">
+            <h2>Welcome Back</h2>
+            <div class="inputbox">
+                <input type="Username" id="email"required>
+                <span>Email address</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="password" id="password" required>
+                <span>Password</span>
+                <i></i>
+            </div>
+            <p id="errorMesssage"  hidden></p>
+            <div class="links">
+                <a href="#">Forget Password</a>
+                <a href="file:///Users/HALIMAT/Desktop/my%20javaScript%20project/mykitchensign.html#">Signup</a>
+            </div>
+            <button class="btn" onclick="SubmitLogin()">Login</button>
+        </div>
+    </div>
+    <script>
+        function SubmitLogin(){
+            var password =document.getElementById('password').value
+            var email =document.getElementById('email').value
+
+            var loginData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            }
+
+            let usersData = JSON.parse(localStorage.getItem('users'))
+            let obj = {}
+            let loginStatus = false
+
+            usersData.some(item=>{
+                if(item.email==loginData.email && item.pass == loginData.password){
+                    localStorage.setItem("authUser", JSON.stringify(item))
+                    loginStatus = true
+                    obj = item
+                }
+            })
+
+            if(loginStatus){
+                window.location.assign('myKitchen.html')
+            } else{
+                alert('you have no account with us. Kindly sign up')
+                window.location.assign('myKitchensign.html')
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>

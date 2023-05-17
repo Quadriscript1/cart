@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fiber form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: khaki;
+        
+      }
+      .go {
+        background-color: crimson;
+        color: azure;
+      }
+      .btn-lg {
+        background-color: crimson;
+        color: azure;
+        width: 70%;
+      }
+      a {
+        color: #6610f2;
+      }
+      .col-md-6 {
+        padding: 40px;
+      }
+      .post {
+        position: relative;
+      }
+      .get {
+        position: absolute;
+        top: 10;
+        right: 0;
+        margin-right: 45px;
+        margin-top: -30px;
+      }
+      .que {
+        text-align: center;
+        color: red;
+        font-size: 90px;
+        font-family: cursive;
+      }
+      h1 {
+        color: aquamarine;
+        font-family: cursive;
+      }
+      h2 ,label,p{
+        font-family: cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><span class="que">Q</span>uad's Kitchen</h1>
+          <h2 class="text-center font-weight-bold py-4">
+            Get your food anytime, anywhere with the Quad's kitchen.
+          </h2>
+          <form>
+            <div class="mb-2">
+                <label for="exampleInputEmail1"class="form-label font-weight-bold">Lastname</label>
+                <input type="name"class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Lastname"/>
+                <span id="report1"></span>
+              </div>
+            <div class="mb-2">
+              <label for="exampleInputEmail1"class="form-label font-weight-bold">Firstname</label>
+              <input type="name" class="form-control" id="firstname"aria-describedby="emailHelp"placeholder="Firstname">
+              <span id="report2"></span>
+            </div>
+            <div class="mb-2">
+              <label for="email" class="form-label font-weight-bold">Email</label>
+              <input type="email" class="form-control"id="email"placeholder="@example.com"/>
+              <span id="report3"></span>
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1"class="form-label font-weight-bold">Password</label>
+              <input type="password" class="form-control post" id="password" placeholder="At least 8 characters"><img onclick="showpassword()"class="get"src="../Assets/hide password.svg" alt=""/>
+              <span id="report4"></span>
+            </div>
+            <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label font-weight-bold">Confirm password</label>
+                <input type="password" class="form-control post"id="confirmpassword"placeholder="At least 8 characters"/><img onclick="showpassword()"class="get" src="../Assets/hide password.svg"alt=""/>
+              </div>
+            <div class="mb-2 form-check">
+              <input type="checkbox"class="form-check-input" id="exampleCheck1" />
+              <label class="form-check-label" for="exampleCheck1">By creating an account on Quad's kitchen, you agree to the <br /><span><a href="#">Terms & Conditions.</a></span></label>
+            </div>
+            <div class="text-center">
+              <button onclick="signUp()" type="button" class="btn btn-lg px-4">
+                Sign Up
+              </button>
+            </div>
+            <div class="my-4 text-center">
+              <p>
+                Already have an account? <span><a href="file:///Users/HALIMAT/Desktop/my%20javaScript%20project/loginkitchen.html#">Log in</a></span>
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 py-5 go">
+          <div>
+            <img
+              src="../../Desktop/istockphoto-164473899-612x612.jpg"
+              alt=""
+              width="100%"
+            />
+          </div>
+          <div class="text-center py-4">
+            <h2>Cooking made easy.</h2>
+            <p>
+              From kitchen to table, we've got you covered! <br />
+              Quad's Kitchen essentials at their finest!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script >
+        var state = false;
+      function showpassword() {
+          if (state) {
+              document.getElementById("password").setAttribute("type","password");
+              state = false;
+          }
+          else{
+              document.getElementById("password").setAttribute("type","text");
+              state = true;
+          }
+          if (state) {
+              document.getElementById("confirmpassword").setAttribute("type","password");
+              state = false;
+          }
+          else{
+              document.getElementById("confirmpassword").setAttribute("type","text");
+              state = true;
+          }
+      }
+      
+
+      function signUp(){
+        var firstName = document.getElementById('firstname').value
+        var lastName = document.getElementById('lastname').value
+        var email = document.getElementById('email').value
+        var password = document.getElementById('password').value
+        var confirmPassword = document.getElementById('confirmpassword').value
+        var report1 = document.getElementById('report1')
+        var report2 = document.getElementById('report2')
+        var report3 = document.getElementById('report3')
+        var report4 = document.getElementById('report4')
+      
+        var regex = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+        var emailResult = regex.test(email)
+        var pass =  /^[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+        var realpassword = pass.test(password)
+        if(lastName == ''){
+            report1.innerHTML = 'please kindly fill this input'
+            return false
+
+        } else{
+            report1.innerHTML=''
+        }
+        if(firstName == ''){
+            report2.innerHTML = 'please kindly fill this input'
+            return false
+        } else{
+            report2.innerHTML=''
+        }
+        if(email == ''){
+            report3.innerHTML = 'please kindly fill this input'
+            return false
+        } else{
+            report3.innerHTML=''
+        }
+        if(!emailResult){
+            report3.innerHTML ="the email is not valid"
+            return false
+
+        }
+        else{
+            report3.innerHTML = ''
+        }
+        if(password == ''){
+            report4.innerHTML = 'password no dey abeg jor'
+            return false
+
+        }else{
+            report4.innerHTML = ''
+        }
+        if(!realpassword){
+            report4.innerHTML = 'Password not complete'
+            return false
+        } 
+        if(password != confirmPassword){
+            report4.innerHTML = 'ori e baje. ole'
+            return false
+        }
+        
+
+        else{
+            let obj = {
+                id: Math.floor(Math.random() * 10000),
+                name: document.getElementById('firstname').value,
+                lastName: document.getElementById('lastname').value,
+                email: document.getElementById('email').value,
+                pass: document.getElementById('password').value
+              };
+              
+              let arr = [];
+              if (localStorage.getItem('users') === null) {
+                arr.push(obj);
+              } else {
+                arr = JSON.parse(localStorage.getItem('users'));
+                if (arr.some(el => el.email === obj.email)) {
+                  return alert('Email already exists');
+                } else {
+                  arr.push(obj);
+                }
+              }
+              
+            localStorage.setItem('users', JSON.stringify(arr))
+            window.location.assign('loginkitchen.html')
+        }
+      }
+      
+
+      // function signUp(){
+      //   var firstName = document.getElementById('firstname').value
+      //   var lastName = document.getElementById('lastname').value
+      //   var password = document.getElementById('password').value
+      //   var email = document.getElementById('email').value
+      //   var confirmPasswword = document.getElementById('confirmpassword').value
+      //   if (firstName == '' || lastName == '' || email == '' || password == "") {
+      //     alert('you\'re good')
+      //   }
+      // }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
